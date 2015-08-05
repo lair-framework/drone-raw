@@ -18,6 +18,8 @@ const (
 	version = "2.0.0"
 	tool    = "raw"
 	usage   = `
+Imports a lair JSON file into a new lair project.
+
 Usage:
   drone-raw <id> <filename>
   export LAIR_ID=<id>; drone-raw <filename>
@@ -63,7 +65,7 @@ func main() {
 		log.Fatalf("Fatal: Error parsing LAIR_API_SERVER URL. Error %s", err.Error())
 	}
 	if u.User == nil {
-		log.Fatal("Missing username and/or password")
+		log.Fatal("Fatal: Missing username and/or password")
 	}
 	user := u.User.Username()
 	pass, _ := u.User.Password()
