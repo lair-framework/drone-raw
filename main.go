@@ -95,6 +95,7 @@ func main() {
 		log.Fatalf("Fatal: Could not parse JSON. Error %s", err.Error())
 	}
 	l.ID = lairPID
+	l.Tool = tool
 
 	for i := range l.Hosts {
 		l.Hosts[i].Tags = append(l.Hosts[i].Tags, hostTags...)
