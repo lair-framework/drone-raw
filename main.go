@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -91,6 +92,7 @@ func main() {
 		hostTags = strings.Split(*tags, ",")
 	}
 	l := lair.Project{}
+	data = bytes.TrimPrefix(data, []byte("\xef\xbb\xbf")) // Or []byte{239, 187, 191}
 	if err := json.Unmarshal(data, &l); err != nil {
 		log.Fatalf("Fatal: Could not parse JSON. Error %s", err.Error())
 	}
